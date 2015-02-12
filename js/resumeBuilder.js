@@ -15,7 +15,7 @@ var bio = {
   },
   "skills": ["<br>","HTML","CSS", "Saas", "JavaScript","JQuery","JSON", "Github", "<br>"], 
   "image": "images/me.jpg",
-  "welcomeMessage": "<br><br><br>I'm a self-taught enthusiast, currently living in Chicago and looking for new opportunities in Front-End Web Development. When I'm not programming I'm often either walking around, reading some book, or goofing around with a guitar.<br><br>"
+  "welcomeMessage": "<br><br><br>I'm a self-taught programmer, currently living in Chicago and looking for new opportunities in Front-End Web Development. When I'm not coding, I'm often either walking around, reading some book, or goofing around with a guitar.<br><br>"
 };
 
 
