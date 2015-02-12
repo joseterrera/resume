@@ -13,9 +13,9 @@ var bio = {
     "twitter":"@joseterrera", 
     "location": "Chicago"
   },
-  "skills": ["HTML","CSS","JavaScript","JQuery","JSON", "Learning Freak", "ugh"], 
+  "skills": ["<br>","HTML","CSS", "Saas", "JavaScript","JQuery","JSON", "Github", "<br>"], 
   "image": "images/me.jpg",
-  "welcomeMessage": "Currently living in Chicago and looking for new opportunities in Front-End Web Development..."
+  "welcomeMessage": "<br><br><br>I'm a self-taught enthusiast, currently living in Chicago and looking for new opportunities in Front-End Web Development. When I'm not programming I'm often either walking around, reading some book, or goofing around with a guitar.<br><br>"
 };
 
 
@@ -38,9 +38,10 @@ var education = {
     },
     {
     "name" : "University of Buenos Aires",
+    "degree": "Bachelor in Law",
         "location" : "Buenos Aires, Argentina",
         "dates" : "March 2001 - Dec. 2004",
-        "description": "Three full years of legal coursework"
+        "description": "Three full years of legal coursework."
     }
 
 
@@ -50,8 +51,7 @@ var education = {
         "title" : "JavaScript Coursework",
         "school" : "Treehouse",
         "dates" : "2014",
-        "website" : "http://teamtreehouse.com/library/topic:learn-javascript",
-        "description": "It is fair to say that I've done much more with this site, but my main efforts have been directed towards understanding JavaScript."
+        "website" : "http://teamtreehouse.com/library/topic:learn-javascript"
     },
     {
         "title" : "Front-End Web Developer Nanodegree",
@@ -175,12 +175,46 @@ work.display = function(){
     var formattedTitle = HTMLworkTitle.replace("%data%", j["title"]);
     var formattedEmployer = HTMLworkEmployer.replace("%data%", j["employer"]);
     var formattedDates = HTMLworkDates.replace("%data%", j["dates"]);
-    var formattedLocation = HTMLworkLocation.replace("%data%", j["city"]);
+    var formattedLocation = HTMLworkLocation.replace("%data%", j["location"]);
     var formattedDescription = HTMLworkDescription.replace("%data%", j["description"]);
     $(".work-entry:last").append(formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription);
 
   }
 
+};
+
+
+education.display = function(){
+  for(school in education["schools"]) {
+    $("#education").append(HTMLschoolStart);
+    var educ = education["schools"][school];
+    var educName = HTMLschoolName.replace("%data%", educ["name"]);
+    var educDegree = HTMLschoolDegree.replace("%data%", educ["degree"]);
+    var educDates = HTMLschoolDates.replace("%data%", educ["dates"]);
+    var educLocation = HTMLschoolLocation.replace("%data%", educ["location"]);
+    var educDescription = HTMLschoolDescription.replace("%data%", educ["description"]);
+$(".education-entry:last").append(educName + educDegree + educDates + educLocation + educDescription);
+
+  }
+
+
+
+if (education.onlineCourses.length > 0) {
+      $("#education").append(HTMLonlineClasses);
+      for (course in education.onlineCourses) {
+        $("#education").append(HTMLschoolStart);
+
+var onlineEduc = education.onlineCourses[course];
+
+        var onlineTitle = HTMLonlineTitle.replace("%data%", onlineEduc["title"]);
+        var onlineName = HTMLonlineSchool.replace("%data%", onlineEduc["school"]);
+        var onlineDates = HTMLonlineDates.replace("%data%", onlineEduc["dates"]);
+        var onlineURL = HTMLonlineURL.replace("%data%", onlineEduc["website"]);
+       
+    $(".education-entry:last").append(onlineTitle + onlineName + onlineDates + onlineURL);
+
+  } 
+}
 };
 
 //Projects
@@ -206,19 +240,7 @@ projects.display = function(){
   }
 }
 
-education.display = function(){
-  for(school in education["schools"]) {
-    $("#education").append(HTMLschoolStart);
-    var educ = education["schools"][school];
-    var educName = HTMLschoolName.replace("%data%", educ["name"]);
-    var educDegree = HTMLschoolDegree.replace("%data%", educ["degree"]);
-    var educDates = HTMLschoolDates.replace("%data%", educ["dates"]);
-    var educLocation = HTMLschoolLocation.replace("%data%", educ["location"]);
-    var educDescription = HTMLschoolDescription.replace("%data%", educ["description"]);
-$(".education-entry:last").append(educName + educDegree + educDates + educLocation + educDescription);
 
-  }
-}
 
 
 
@@ -231,8 +253,9 @@ $(".education-entry:last").append(educName + educDegree + educDates + educLocati
 
 bio.display();
 work.display();
-projects.display();
 education.display(); 
+projects.display();
+
 // log clicks
 $(document).click(function(loc){
   var x = loc.pageX;
